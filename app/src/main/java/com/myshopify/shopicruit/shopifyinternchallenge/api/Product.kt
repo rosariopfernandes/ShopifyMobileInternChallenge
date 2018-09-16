@@ -10,6 +10,8 @@ data class Product(
     var handle: String, // TODO: Use this for dynamic linking
     var updated_at: String,
     var published_at: String,
-    var tags: String
-    // TODO: Add variants, images and image
+    var tags: String,
+    var variants: ArrayList<Product>,
+    var images: ArrayList<Image>,
+    var image: Image
 )
