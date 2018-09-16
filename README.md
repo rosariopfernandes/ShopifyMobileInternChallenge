@@ -18,3 +18,7 @@ This Project is licensed under the [MIT License](LICENSE).
 The project makes use of the following open source libraries:
 
 - [Retrofit](http://square.github.io/retrofit/)
+
+- [Glide](https://bumptech.github.io/glide/)
+
+- [livedata-ktx](https://github.com/Shopify/livedata-ktx)
