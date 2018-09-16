@@ -13,5 +13,6 @@ data class Product(
     var tags: String,
     var variants: ArrayList<Product>,
     var images: ArrayList<Image>,
-    var image: Image
+    var image: Image,
+    var inventory_quantity: Int = 0
 )

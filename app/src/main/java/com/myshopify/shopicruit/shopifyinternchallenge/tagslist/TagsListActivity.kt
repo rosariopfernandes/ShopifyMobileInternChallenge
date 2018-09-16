@@ -2,6 +2,7 @@ package com.myshopify.shopicruit.shopifyinternchallenge.tagslist
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
@@ -11,8 +12,10 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import com.myshopify.shopicruit.shopifyinternchallenge.R
+import com.myshopify.shopicruit.shopifyinternchallenge.productslist.ProductsActivity
 import kotlinx.android.synthetic.main.activity_tags_list.*
 import kotlinx.android.synthetic.main.content_simple_list.*
+import mz.co.kidzkare.vaccines.util.RecyclerItemClickListener
 
 class TagsListActivity : AppCompatActivity() {
 
@@ -28,6 +31,23 @@ class TagsListActivity : AppCompatActivity() {
                 recyclerView.adapter = TagsAdapter(it)
                 recyclerView.visibility = View.VISIBLE
                 ivEmptyState.visibility = View.GONE
+
+                recyclerView.addOnItemTouchListener(
+                        RecyclerItemClickListener(
+                                recyclerView,
+                                object : RecyclerItemClickListener.OnItemClickListener {
+                                    override fun onItemClick(view: View, position: Int) {
+                                        val selectedTag = it[position]
+                                        val intent = Intent(this@TagsListActivity,
+                                                ProductsActivity::class.java)
+                                        intent.putExtra(PRODUCT_TAG_KEY, selectedTag)
+                                        startActivity(intent)
+                                    }
+
+                                    override fun onLongItemClick(view: View, position: Int) {
+
+                                    }
+                                }))
             }
         })
 
@@ -47,5 +67,9 @@ class TagsListActivity : AppCompatActivity() {
             R.id.action_settings -> true
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    companion object {
+        const val PRODUCT_TAG_KEY = "com.shopify.shopicruit.product.tag"
     }
 }
