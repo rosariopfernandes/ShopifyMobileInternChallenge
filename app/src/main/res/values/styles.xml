@@ -5,7 +5,8 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/polaris_color_purple_dark</item>
         <item name="colorPrimaryDark">@color/polaris_color_purple_darker</item>
-        <item name="colorAccent">@color/polaris_color_teal</item>
+        <item name="colorAccent">@color/polaris_color_indigo</item>
+        <item name="android:colorBackground">@color/polaris_color_sky_light</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -17,4 +18,14 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="PolarisButton" parent="android:style/Widget.Button">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">@color/polaris_color_indigo_dark</item>
+    </style>
+
+    <style name="PolarisHeading">
+        <item name="android:textColor">@color/polaris_color_indigo_text</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

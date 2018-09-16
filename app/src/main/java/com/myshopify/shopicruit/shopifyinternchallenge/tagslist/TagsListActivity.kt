@@ -1,12 +1,18 @@
-package com.myshopify.shopicruit.shopifyinternchallenge
+package com.myshopify.shopicruit.shopifyinternchallenge.tagslist
 
+import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-
+import android.view.View
+import android.widget.Toast
+import com.myshopify.shopicruit.shopifyinternchallenge.R
 import kotlinx.android.synthetic.main.activity_tags_list.*
+import kotlinx.android.synthetic.main.content_simple_list.*
 
 class TagsListActivity : AppCompatActivity() {
 
@@ -15,10 +21,16 @@ class TagsListActivity : AppCompatActivity() {
         setContentView(R.layout.activity_tags_list)
         setSupportActionBar(toolbar)
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-        }
+        val viewModel = ViewModelProviders.of(this).get(TagsViewModel::class.java)
+        viewModel.getTags().observe(this, Observer { tags ->
+            tags?.let {
+                recyclerView.layoutManager = LinearLayoutManager(this)
+                recyclerView.adapter = TagsAdapter(it)
+                recyclerView.visibility = View.VISIBLE
+                ivEmptyState.visibility = View.GONE
+            }
+        })
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

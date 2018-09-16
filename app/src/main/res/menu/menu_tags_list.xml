@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.myshopify.shopicruit.shopifyinternchallenge.TagsListActivity">
+    tools:context="com.myshopify.shopicruit.shopifyinternchallenge.tagslist.TagsListActivity">
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
