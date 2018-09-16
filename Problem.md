@@ -25,7 +25,9 @@ Note that the [API link](https://shopicruit.myshopify.com/admin/products.json?pa
 
 
 Android:
+
 [http://square.github.io/retrofit/](http://square.github.io/retrofit/)
+
 [http://square.github.io/okhttp/](http://square.github.io/okhttp/)
 
 
