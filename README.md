@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.com/rosariopfernandes/ShopifyMobileInternChallengeWinter2019.svg?branch=master)]
+(https://travis-ci.com/rosariopfernandes/ShopifyMobileInternChallengeWinter2019)
+
 # Shopify Mobile Intern Challenge (Android) Winter 2019
 
 This repository contains my solution for the Shopify Mobile Intern Challenge (Android) Winter 2019.
