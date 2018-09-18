@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/tagsFragment"
         android:name="com.myshopify.shopicruit.shopifyinternchallenge.tagslist.TagsFragment"
-        android:label="TagsFragment"
+        android:label="@string/app_name"
         tools:layout="@layout/content_simple_list">
         <action
             android:id="@+id/action_tagsFragment_to_productsFragment"
@@ -18,6 +18,6 @@
     <fragment
         android:id="@+id/productsFragment"
         android:name="com.myshopify.shopicruit.shopifyinternchallenge.productslist.ProductsFragment"
-        android:label="ProductsFragment"
+        android:label="@string/title_activity_products"
         tools:layout="@layout/content_simple_list"/>
 </navigation>

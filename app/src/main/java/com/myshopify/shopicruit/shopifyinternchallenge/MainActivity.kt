@@ -12,6 +12,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
+        val navController = findNavController(R.id.nav_host_fragment)
+        navController.addOnNavigatedListener { _, destination ->
+            supportActionBar?.title = destination.label
+            if (destination.id == R.id.productsFragment) {
+                supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            } else {
+                supportActionBar?.setDisplayHomeAsUpEnabled(false)
+            }
+        }
     }
 
     override fun onSupportNavigateUp() = findNavController(R.id.nav_host_fragment).navigateUp()
