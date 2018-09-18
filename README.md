@@ -1,5 +1,4 @@
-[![Build Status](https://travis-ci.com/rosariopfernandes/ShopifyMobileInternChallengeWinter2019.svg?branch=master)]
-(https://travis-ci.com/rosariopfernandes/ShopifyMobileInternChallengeWinter2019)
+![Build Status](https://travis-ci.com/rosariopfernandes/ShopifyMobileInternChallengeWinter2019.svg?branch=master)
 
 # Shopify Mobile Intern Challenge (Android) Winter 2019
 
