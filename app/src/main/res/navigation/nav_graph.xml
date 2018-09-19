@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/tagsFragment">
+
+    <fragment
+        android:id="@+id/tagsFragment"
+        android:name="com.myshopify.shopicruit.shopifyinternchallenge.tagslist.TagsFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/content_simple_list">
+        <action
+            android:id="@+id/action_view_products"
+            app:destination="@id/productsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/productsFragment"
+        android:name="com.myshopify.shopicruit.shopifyinternchallenge.productslist.ProductsFragment"
+        android:label="@string/title_activity_products"
+        tools:layout="@layout/content_simple_list">
+        <argument
+            android:name="productTag"
+            android:defaultValue="null"
+            app:argType="string"/>
+    </fragment>
+</navigation>

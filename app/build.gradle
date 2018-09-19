@@ -6,6 +6,8 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+apply plugin: 'androidx.navigation.safeargs'
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -32,6 +34,13 @@ dependencies {
     implementation 'com.android.support:design:28.0.0-rc02'
 
     implementation "android.arch.lifecycle:extensions:1.1.1"
+
+    implementation "android.arch.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "android.arch.navigation:navigation-ui-ktx:$nav_version"
+
+    // optional - Test helpers
+    implementation 'com.android.support:support-v4:28.0.0-rc02'
+    androidTestImplementation "android.arch.navigation:navigation-testing:$nav_version"
 
     implementation "com.shopify:livedata-ktx:1.0.1"
 
