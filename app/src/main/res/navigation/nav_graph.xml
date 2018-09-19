@@ -11,7 +11,7 @@
         android:label="@string/app_name"
         tools:layout="@layout/content_simple_list">
         <action
-            android:id="@+id/action_tagsFragment_to_productsFragment"
+            android:id="@+id/action_view_products"
             app:destination="@id/productsFragment" />
     </fragment>
 
@@ -19,5 +19,10 @@
         android:id="@+id/productsFragment"
         android:name="com.myshopify.shopicruit.shopifyinternchallenge.productslist.ProductsFragment"
         android:label="@string/title_activity_products"
-        tools:layout="@layout/content_simple_list"/>
+        tools:layout="@layout/content_simple_list">
+        <argument
+            android:name="productTag"
+            android:defaultValue="null"
+            app:argType="string"/>
+    </fragment>
 </navigation>

@@ -24,8 +24,4 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp() = findNavController(R.id.nav_host_fragment).navigateUp()
-
-    companion object {
-        const val PRODUCT_TAG_KEY = "com.shopify.shopicruit.product.tag"
-    }
 }

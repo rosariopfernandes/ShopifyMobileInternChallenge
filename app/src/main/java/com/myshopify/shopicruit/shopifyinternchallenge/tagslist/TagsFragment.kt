@@ -10,7 +10,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.myshopify.shopicruit.shopifyinternchallenge.MainActivity
 import com.myshopify.shopicruit.shopifyinternchallenge.R
 import kotlinx.android.synthetic.main.content_simple_list.*
 import mz.co.kidzkare.vaccines.util.RecyclerItemClickListener
@@ -36,9 +35,10 @@ class TagsFragment : Fragment() {
                                 object : RecyclerItemClickListener.OnItemClickListener {
                                     override fun onItemClick(view: View, position: Int) {
                                         val selectedTag = it[position]
-                                        val bundle = Bundle()
-                                        bundle.putString(MainActivity.PRODUCT_TAG_KEY, selectedTag)
-                                        findNavController().navigate(R.id.productsFragment, bundle)
+                                        val action =
+                                                TagsFragmentDirections.actionViewProducts()
+                                        action.setProductTag(selectedTag)
+                                        findNavController().navigate(action)
                                     }
 
                                     override fun onLongItemClick(view: View, position: Int) {
