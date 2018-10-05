@@ -10,7 +10,7 @@ Find the Problem description [here](Problem.md).
 
 ## Contributing
 Feel free to **contribute with suggestions and bug reports** via
- [issue](https://github.com/rosariopfernandes/ShopifyMobileInternChallengeWinter2019/issues/new).
+ [issues](https://github.com/rosariopfernandes/ShopifyMobileInternChallengeWinter2019/issues/new).
 
 Currently **not accepting code contributions**, since all the code written here must be made by me. Sorry about that, and thanks for your comprehension.
 
