@@ -1,6 +1,8 @@
 package com.myshopify.shopicruit.shopifyinternchallenge.api
 
+import kotlinx.coroutines.experimental.Deferred
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -11,7 +13,7 @@ interface ProductService {
     fun getProducts(
         @Query("page") page: Int,
         @Query("access_token") accessToken: String
-    ): Call<ProductsList>
+    ): Deferred<Response<ProductsList>>
 
     @GET("admin/products/{id}.json")
     fun getProduct(

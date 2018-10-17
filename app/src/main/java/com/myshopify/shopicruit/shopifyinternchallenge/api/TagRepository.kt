@@ -2,9 +2,10 @@ package com.myshopify.shopicruit.shopifyinternchallenge.api
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.experimental.CoroutineCallAdapterFactory
+import kotlinx.coroutines.experimental.Dispatchers
+import kotlinx.coroutines.experimental.GlobalScope
+import kotlinx.coroutines.experimental.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -15,6 +16,7 @@ class TagRepository {
         val retrofit = Retrofit.Builder()
                 .baseUrl(ProductRepository.SHOPIFY_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .build()
 
         productService = retrofit.create(ProductService::class.java)
@@ -23,27 +25,24 @@ class TagRepository {
     fun getTags(): LiveData<ArrayList<String>> {
         val tagsLiveData = MutableLiveData<ArrayList<String>>()
         var tagsSet  = setOf<String>()
-        productService.getProducts(1, ProductRepository.ACCESS_TOKEN)
-                .enqueue(object: Callback<ProductsList> {
 
-                    override fun onResponse(call: Call<ProductsList>?,
-                                            response: Response<ProductsList>) {
-                        response.body()?.products?.let {
-                            it.forEach { product ->
-                                val tagsArray = product.tags.split(", ")
-                                for (tag in tagsArray) {
-                                    tagsSet += tag
-                                }
-                            }
-                            tagsLiveData.value = ArrayList(tagsSet.sorted())
+        GlobalScope.launch(Dispatchers.Main) {
+            val request = productService.getProducts(1, ProductRepository.ACCESS_TOKEN)
+            val response = request.await()
+            if (response.isSuccessful) {
+                response.body()?.products?.let {
+                    it.forEach { product ->
+                        val tagsArray = product.tags.split(", ")
+                        for (tag in tagsArray) {
+                            tagsSet += tag
                         }
                     }
-
-                    override fun onFailure(call: Call<ProductsList>, t: Throwable) {
-                        tagsLiveData.value = null
-                        t.printStackTrace()
-                    }
-                })
+                    tagsLiveData.value = ArrayList(tagsSet.sorted())
+                }
+            } else {
+                tagsLiveData.value = null
+            }
+        }
         return tagsLiveData
     }
 

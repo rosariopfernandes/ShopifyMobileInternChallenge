@@ -2,6 +2,11 @@ package com.myshopify.shopicruit.shopifyinternchallenge.api
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
+import android.util.Log
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.experimental.CoroutineCallAdapterFactory
+import kotlinx.coroutines.experimental.Dispatchers
+import kotlinx.coroutines.experimental.GlobalScope
+import kotlinx.coroutines.experimental.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -15,6 +20,7 @@ class ProductRepository {
         val retrofit = Retrofit.Builder()
                 .baseUrl(SHOPIFY_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .build()
 
         productService = retrofit.create(ProductService::class.java)
@@ -39,19 +45,16 @@ class ProductRepository {
 
     fun getProducts(): LiveData<ArrayList<Product>> {
         val data = MutableLiveData<ArrayList<Product>>()
-        productService.getProducts(1, ACCESS_TOKEN)
-                .enqueue(object: Callback<ProductsList> {
-
-                    override fun onResponse(call: Call<ProductsList>,
-                                            response: Response<ProductsList>) {
-                        data.value = response.body()?.products
-                    }
-
-                    override fun onFailure(call: Call<ProductsList>?, t: Throwable) {
-                        data.value = null
-                        t.printStackTrace()
-                    }
-                })
+        GlobalScope.launch(Dispatchers.Main) {
+            val request = productService.getProducts(1, ACCESS_TOKEN)
+            val response = request.await()
+            if (response.isSuccessful) {
+                data.value = response.body()?.products
+            } else {
+                data.value = null
+                Log.e("ProductRepository", "Could not load products")
+            }
+        }
         return data
     }
 
