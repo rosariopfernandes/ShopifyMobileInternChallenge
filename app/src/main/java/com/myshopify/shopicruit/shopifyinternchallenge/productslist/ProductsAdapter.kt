@@ -1,11 +1,11 @@
 package com.myshopify.shopicruit.shopifyinternchallenge.productslist
 
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.myshopify.shopicruit.shopifyinternchallenge.R
 import com.myshopify.shopicruit.shopifyinternchallenge.api.Product

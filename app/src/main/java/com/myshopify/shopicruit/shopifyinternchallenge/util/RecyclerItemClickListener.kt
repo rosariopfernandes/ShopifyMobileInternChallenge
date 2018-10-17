@@ -1,9 +1,9 @@
-package mz.co.kidzkare.vaccines.util
+package com.myshopify.shopicruit.shopifyinternchallenge.util
 
-import android.support.v7.widget.RecyclerView
 import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.View
+import androidx.recyclerview.widget.RecyclerView
 
 class RecyclerItemClickListener(recyclerView: RecyclerView, listener: OnItemClickListener) : RecyclerView.OnItemTouchListener{
     private var mListener: OnItemClickListener? = null
