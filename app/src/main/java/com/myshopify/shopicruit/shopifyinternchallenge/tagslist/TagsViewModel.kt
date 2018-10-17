@@ -1,7 +1,7 @@
 package com.myshopify.shopicruit.shopifyinternchallenge.tagslist
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
 import com.myshopify.shopicruit.shopifyinternchallenge.api.TagRepository
 
 class TagsViewModel : ViewModel() {
