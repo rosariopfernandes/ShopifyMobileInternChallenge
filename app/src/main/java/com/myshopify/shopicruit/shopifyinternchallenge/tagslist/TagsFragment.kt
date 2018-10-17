@@ -1,18 +1,17 @@
 package com.myshopify.shopicruit.shopifyinternchallenge.tagslist
 
-
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.myshopify.shopicruit.shopifyinternchallenge.R
+import com.myshopify.shopicruit.shopifyinternchallenge.util.RecyclerItemClickListener
 import kotlinx.android.synthetic.main.content_simple_list.*
-import mz.co.kidzkare.vaccines.util.RecyclerItemClickListener
 
 
 class TagsFragment : Fragment() {
@@ -38,7 +37,8 @@ class TagsFragment : Fragment() {
                                         val action =
                                                 TagsFragmentDirections.actionViewProducts()
                                         action.setProductTag(selectedTag)
-                                        findNavController().navigate(action)
+                                        findNavController(activity!!, R.id.nav_host_fragment)
+                                                .navigate(action)
                                     }
 
                                     override fun onLongItemClick(view: View, position: Int) {

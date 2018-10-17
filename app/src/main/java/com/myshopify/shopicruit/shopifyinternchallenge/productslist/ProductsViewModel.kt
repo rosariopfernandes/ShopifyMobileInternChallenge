@@ -1,8 +1,7 @@
 package com.myshopify.shopicruit.shopifyinternchallenge.productslist
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.ViewModel
-import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
 import com.myshopify.shopicruit.shopifyinternchallenge.api.Product
 import com.myshopify.shopicruit.shopifyinternchallenge.api.ProductRepository
 import com.shopify.livedataktx.map
@@ -21,7 +20,6 @@ class ProductsViewModel : ViewModel() {
                 val newList = ArrayList<Product>()
                 it.forEach { product ->
                     if (product.tags.split(", ").contains(productTag)) {
-                        Log.e("ProdViewModel", "${product.title} contains ${product.tags}")
                         newList.add(product)
                     }
                 }
