@@ -19,7 +19,7 @@ class ProductsFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         val fragmentView = inflater.inflate(R.layout.content_simple_list, container, false)
 
-        val productTag = ProductsFragmentArgs.fromBundle(arguments).productTag
+        val productTag = ProductsFragmentArgs.fromBundle(arguments!!).productTag
 
         val viewModel = ViewModelProviders.of(this).get(ProductsViewModel::class.java)
         viewModel.getProducts(productTag).observe(this, Observer { products ->

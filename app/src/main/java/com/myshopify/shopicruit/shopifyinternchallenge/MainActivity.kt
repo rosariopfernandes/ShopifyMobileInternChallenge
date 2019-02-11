@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         val navController = findNavController(R.id.nav_host_fragment)
-        navController.addOnNavigatedListener { _, destination ->
+        navController.addOnDestinationChangedListener { _, destination, _ ->
             supportActionBar?.title = destination.label
             if (destination.id == R.id.productsFragment) {
                 supportActionBar?.setDisplayHomeAsUpEnabled(true)
